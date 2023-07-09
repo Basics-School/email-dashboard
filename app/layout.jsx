@@ -35,10 +35,10 @@ export default function RootLayout({ children, modal }) {
             <SideMenu />
             <div className="h-full w-full flex relative flex-col">
               <Command>
-                <header className="h-[60px] shrink-0 flex items-center justify-between px-8 border-b border-zinc-800  top-0 bg-neutral-900 w-full">
+                <header className="h-[60px] shrink-0 flex items-center justify-between md:px-8 px-2 border-b border-zinc-800  top-0 bg-neutral-900 w-full">
                   <SearchMenu />
 
-                  <div className="flex gap-2 justify-self-end">
+                  <div className="flex gap-2 ">
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger>
@@ -64,7 +64,9 @@ export default function RootLayout({ children, modal }) {
                   </div>
                 </header>
                 <div className="flex flex-row h-full relative w-full">
-                  <EmailList />
+                  <div className="lg:flex hidden flex-row h-full relative w-full">
+                    <EmailList />
+                  </div>
 
                   {children}
                 </div>

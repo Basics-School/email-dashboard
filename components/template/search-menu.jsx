@@ -17,7 +17,7 @@ import { CommandInput } from "../ui/command";
 const SearchMenu = () => {
   const router = useRouter();
   return (
-    <div className="flex items-center justify-center gap-4">
+    <div className="flex items-center  gap-4">
       <button onClick={() => router.back()}>
         <TooltipProvider>
           <Tooltip>
@@ -30,10 +30,10 @@ const SearchMenu = () => {
           </Tooltip>
         </TooltipProvider>
       </button>
-      <div className=" flex  flex-row focus:ring-1 ring-offset-blue-600 border border-zinc-800 items-center px-2 rounded-md bg-zinc-900">
+      <div className=" flex px-2  flex-row border border-zinc-800 items-center  rounded-md bg-zinc-900">
         <SearchIcon className={"text-gray-700 h-5 w-5"} />
         <CommandInput
-          className="bg-transparent  outline-none px-3 lg:py-2 py-1 text-white"
+          className="bg-transparent  outline-none sm:px-3 lg:py-2  text-white"
           type="text"
           name=""
           id=""
@@ -41,14 +41,14 @@ const SearchMenu = () => {
         />
         <FilterIcon
           className={
-            " bg-zinc-800 p-px rounded text-green-800 hover:text-green-400 cursor-pointer"
+            " bg-zinc-800 p-px h-5 w-5 rounded text-green-800 hover:text-green-400 cursor-pointer"
           }
         />
       </div>
-      <DialogTrigger asChild>
+      <DialogTrigger className="" asChild>
         <Link
           href={"/compose"}
-          className="bg-white/80 hover:bg-blue-600 group h-10 cursor-pointer w-10 p-1 flex items-center justify-center rounded-md"
+          className="bg-white/80 hidden  hover:bg-blue-600 group h-10 cursor-pointer w-10 p-1 lg:flex items-center justify-center rounded-md"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

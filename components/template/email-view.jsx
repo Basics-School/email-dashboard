@@ -1,25 +1,51 @@
-import { StarIcon } from 'lucide-react'
-import React from 'react'
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { fakeData } from "@/lib/data";
+import { format } from "date-fns";
+import React from "react";
 
-const EmailView = () => {
+const EmailView = ({ email }) => {
   return (
-    <div>
-    <h2 class="mt-10 font-medium">Interview - Plato Agency</h2>
-    <div class="text-zinc-400 text-sm mt-5 space-y-3">
-      <p>Hello John, we hope you are doing well!</p>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis ipsa
-        repellendus dolores, iure quisquam a, autem cupiditate hic accusantium
-        ratione, enim mollitia iste amet error obcaecati rerum. In, sed corporis?
-      </p>
-    </div>
+    <div className="md:px-6 p-2 md:py-4 overflow-y-scroll scrollbar-w-1 scrollbar scrollbar-thumb-zinc-600 scrollbar-thumb-rounded-full  border-b border-zinc-800 h-full text-white ">
+      <div className="flex flex-col px-2 gap-10">
+        <div className="flex md:flex-row flex-col justify-between  w-full">
+          <div className="text-gray-600 flex flex-row  gap-4 items-center">
+            <Avatar className="">
+              <AvatarFallback className="bg-green-700 text-white">
+                {
+                  fakeData.users
+                    .find((user) => user.user_id == email?.sender_id)
+                    .username.split("")[0]
+                }
+              </AvatarFallback>
+            </Avatar>
+            <div>
+              <h1 className="text-gray-200">
+                {" "}
+                {
+                  fakeData.users.find(
+                    (user) => user.user_id == email?.sender_id
+                  ).username
+                }
+              </h1>
+              <p>
+                {
+                  fakeData.users.find(
+                    (user) => user.user_id == email?.sender_id
+                  ).email
+                }
+              </p>
+            </div>
+          </div>
+          <p className="text-sm text-gray-700 pl-14">
+            {format(email.timestamp, "PPP")}
+          </p>
+        </div>
 
-    <div class="flex items-center justify-between text-sm text-zinc-200 mt-10">
-      <p>Plato Agency HR</p>
-      <a href="#" class="underline underline-offset-2">platowork.com</a>
+        <h1>{email?.subject}</h1>
+        <p>{email.body}</p>
+      </div>
     </div>
-  </div>
-  )
-}
+  );
+};
 
-export default EmailView
+export default EmailView;

@@ -1,8 +1,9 @@
 "use client";
 import { useCallback, useRef, useEffect, MouseEventHandler } from "react";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
-export default function Modal({ children }) {
+export default function Modal({ children, className }) {
   const overlay = useRef(null);
   const wrapper = useRef(null);
   const router = useRouter();
@@ -40,7 +41,10 @@ export default function Modal({ children }) {
     >
       <div
         ref={wrapper}
-        className="absolute md:bottom-10 bottom-5  md:right-20 flex flex-col  border border-zinc-700 bg-zinc-900 h-1/2 rounded-2xl w-full sm:w-10/12 md:w-8/12 lg:w-1/2 p-6"
+        className={cn(
+          "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full sm:w-10/12 md:w-8/12 lg:w-1/2 p-6",
+          className
+        )}
       >
         {children}
       </div>
